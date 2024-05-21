@@ -10,7 +10,7 @@ import Alamofire
 
 extension Session {
     
-    public func eventSourceRequest(_ convertible: URLConvertible, method: HTTPMethod = .get, headers: HTTPHeaders? = nil, parameters: Parameters, lastEventID: String? = nil) -> DataStreamRequest {
+    public func eventSourceRequest(_ convertible: URLConvertible, method: HTTPMethod = .get, headers: HTTPHeaders? = nil, parameters: [String:[String:String]], lastEventID: String? = nil) -> DataStreamRequest {
         return streamRequest(convertible,method: method, parameters: parameters,headers: headers) { request in
             request.timeoutInterval = TimeInterval(Int32.max)
             request.headers.add(name: "Accept", value: "text/event-stream")
